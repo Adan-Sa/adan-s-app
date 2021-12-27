@@ -18,7 +18,7 @@ function login(req, res) {
                 }
 
             } else {
-                res.send({ success: false, message: "User is not found, please register" });
+                res.send({ success: false, message: "Username or password is incorrect" });
             }
         })
         .catch((error) => {
