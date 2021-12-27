@@ -10,11 +10,11 @@ function register(req, res) {
     const data = req.body;
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     const values = [
-        data.username,
+        data.userName,
         hashedPassword
     ];
 
-    db.query(`SELECT * FROM users WHERE username=$1`, [data.username])
+    db.query(`SELECT * FROM users WHERE username=$1`, [data.userName])
         .then((data) => {
             if (!data.rows.length) {
                 db.query(

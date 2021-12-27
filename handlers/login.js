@@ -8,11 +8,11 @@ function get(req, res) {
 function login(req, res) {
     const data = req.body;
 
-    db.query(`SELECT * FROM users WHERE username=$1`, [data.username])
+    db.query(`SELECT * FROM users WHERE username=$1`, [data.userName])
         .then((result) => {
             if (result.rows.length) {
                 if (bcrypt.compareSync(data.password, result.rows[0].password)) {
-                    res.send({ success: true });
+                    res.send({ success: true, message: "Welcome to our website!" });
                 } else {
                     res.send({ success: false, message: "Username or password is incorrect" });
                 }
